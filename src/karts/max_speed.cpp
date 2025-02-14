@@ -445,7 +445,7 @@ void MaxSpeed::update(int ticks)
         m_kart->getVehicle()->setMinSpeed(0);   // no additional acceleration
 
     if (m_kart->isOnGround()) {
-        m_current_max_speed *= 1 + 0.25f * m_kart->getPosition();
+        m_current_max_speed *= 1 + 0.25f * (m_kart->getPosition() - 1);
         m_kart->getVehicle()->setMaxSpeed(m_current_max_speed);
     } else
         m_kart->getVehicle()->setMaxSpeed(9999.9f);
