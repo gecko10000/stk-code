@@ -444,9 +444,10 @@ void MaxSpeed::update(int ticks)
     else 
         m_kart->getVehicle()->setMinSpeed(0);   // no additional acceleration
 
-    if (m_kart->isOnGround())
+    if (m_kart->isOnGround()) {
+        m_current_max_speed *= 1 + 0.25f * m_kart->getPosition();
         m_kart->getVehicle()->setMaxSpeed(m_current_max_speed);
-    else
+    } else
         m_kart->getVehicle()->setMaxSpeed(9999.9f);
 
 }   // update
@@ -533,4 +534,3 @@ void MaxSpeed::rewindTo(BareNetworkString *buffer)
     // Make sure to update the physics
     update(0);
 }   // rewindoTo
-

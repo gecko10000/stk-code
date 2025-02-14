@@ -2805,6 +2805,10 @@ void Kart::updateEnginePowerAndBrakes(int ticks)
         // This also applies parachute physics if relevant
         engine_power = applyAirFriction(engine_power);
 
+        // Increase acceleration based on position
+        float boost = 1 + ((this->getPosition() - 1) * 0.25f);
+        engine_power *= boost;
+
         applyEngineForce(engine_power*m_controls.getAccel());
 
         // Either all or no brake is set, so test only one to avoid
