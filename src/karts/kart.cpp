@@ -2806,7 +2806,7 @@ void Kart::updateEnginePowerAndBrakes(int ticks)
         engine_power = applyAirFriction(engine_power);
 
         // Increase acceleration based on position
-        float boost = 1 + ((this->getPosition() - 1) * 0.25f);
+        float boost = 1 + ((this->getPosition() - 1) * UserConfigParams::m_position_multiplier);
         engine_power *= boost;
 
         applyEngineForce(engine_power*m_controls.getAccel());

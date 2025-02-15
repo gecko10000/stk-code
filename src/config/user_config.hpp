@@ -438,6 +438,10 @@ namespace UserConfigParams
         PARAM_DEFAULT( GroupUserConfigParam("RaceSetup",
                                             "Race Setup Settings") );
 
+    PARAM_PREFIX FloatUserConfigParam         m_position_multiplier
+            PARAM_DEFAULT( FloatUserConfigParam(0.1f, "position_multiplier",
+            &m_race_setup_group,
+            "Multiplier per spot away from first to increase acceleration and max speed by.") );
     PARAM_PREFIX IntUserConfigParam          m_default_num_karts
             PARAM_DEFAULT(  IntUserConfigParam(4, "numkarts",
                             &m_race_setup_group,

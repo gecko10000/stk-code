@@ -19,6 +19,7 @@
 #include "karts/max_speed.hpp"
 
 #include "config/stk_config.hpp"
+#include "config/user_config.hpp"
 #include "karts/abstract_kart.hpp"
 #include "karts/kart_properties.hpp"
 #include "network/network_string.hpp"
@@ -445,7 +446,7 @@ void MaxSpeed::update(int ticks)
         m_kart->getVehicle()->setMinSpeed(0);   // no additional acceleration
 
     if (m_kart->isOnGround()) {
-        m_current_max_speed *= 1 + 0.25f * (m_kart->getPosition() - 1);
+        m_current_max_speed *= 1 + UserConfigParams::m_position_multiplier * (m_kart->getPosition() - 1);
         m_kart->getVehicle()->setMaxSpeed(m_current_max_speed);
     } else
         m_kart->getVehicle()->setMaxSpeed(9999.9f);
